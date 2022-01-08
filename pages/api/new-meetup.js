@@ -6,11 +6,11 @@ async function handler(req, res) {
     // const { title, image, address, description } = data;
     
     //mongo db connection
-    const connectionString = `mongodb+srv://${process.env.mongodb_username}:${process.env.mongodb_password}@${process.env.mongodb_clusterID}.agazq.mongodb.net/${process.env.mongodb_database}?retryWrites=true&w=majority`;
+    const connectionString = "mongodb+srv://testUser:testUser123456@cluster0.agazq.mongodb.net/meetups?retryWrites=true&w=majority";
     const client = await MongoClient.connect(connectionString);
     const db = client.db();
 
-    const meetupsCollection = db.collection(process.env.mongodb_database); 
+    const meetupsCollection = db.collection('meetups'); 
     const result = await meetupsCollection.insertOne(data);
     console.log(result);
     client.close();
